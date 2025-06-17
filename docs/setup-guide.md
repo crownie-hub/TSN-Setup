@@ -19,7 +19,7 @@ This guide provides step-by-step instructions to set up the NXP LS1028A RDB boar
 - Download and build the Yocto-based image for LS1028A: Follow the instructions here (https://www.nxp.com/docs/en/user-guide/RTEDGEYOCTOUG.pdf)
 - `putty`,`minicom` or `screen` (for serial terminal)
 - Optional: Wireshark, scapy (for traffic inspection)
-
+Note: You can openil 1.1 for LS1021ATSN as the Yocto image might not be avalable
 ---
 
 ## Sample Network Architecture
@@ -33,17 +33,16 @@ This guide provides step-by-step instructions to set up the NXP LS1028A RDB boar
 | **BBB / LS1021A**  | End Nodes    | Send traffic with PTP time sync         |
 | **Linux PC**       | Host         | Optional Wireshark/logging node         |
 
-### Topology Diagram
+### Sample Topology Diagram
 
 ```plaintext
 [NXP Board]      [BBB/PC]
 swp0|             | eth0
     +-------------+
- swp1      |  swp2
-     [LS1028A-RDB]
-        (Switch)
+swp1|             |  swp2
+     [LS1028A-RDB](Switch)
           | swp1
-     [LS1028A-RDB]
+     [LS1028A-RDB] | swp1
         (Receiver)
 
 

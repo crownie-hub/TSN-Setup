@@ -1,6 +1,3 @@
-
-# PTP Role-Based Configuration for TSN Testbed (LS1028A)
-
 This guide shows how to set up PTP (IEEE 1588) on each device in a TSN testbed — including the Grandmaster TSN switch, sender, and receiver. It uses `linuxptp` tools: `ptp4l`, and `phc2sys`
 
 ---
@@ -63,7 +60,7 @@ transportspecific  0x1
 
 1. You can change `slaveOnly` option to 1 on the slaves and reduce priority
 ```
-slaveonly       1
+slaveonly        1
 priority1		255
 priority2		255
 ```
@@ -71,7 +68,7 @@ priority2		255
 2. Run as PTP slave:
 
 ```
-sudo ptp4l -i eth0  -p /dev/ptp0-s -m -2 > /var/log/ptp4l.log 2>&1 & 
+sudo ptp4l -i eth0  -p /dev/ptp0 -s -m -2 > /var/log/ptp4l.log 2>&1 & 
 sudo phc2sys -s eth0 -c CLOCK_REALTIME -O 0 -m > /var/log/phc2sys.log 2>&1 & 
 ```
 

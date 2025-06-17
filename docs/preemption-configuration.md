@@ -13,7 +13,7 @@ Run this on **each interface** :
 sudo ethtool -s <interface> speed 1000 duplex full autoneg on
 ```
 
-* Replace `<interface>` with your actual interface name (e.g., `swp0`, `eno0`, or `eth0`).
+* Replace `<interface>` with your actual interface name (e.g., `swp1`), for the both port connecting the switch to the receiver and vice versa
 
  **Remember to set  on:**
 
@@ -37,7 +37,7 @@ You can verify it's enabled with:
  ethtool --show-frame-preemption <interface>
 ```
 
-### Set Preemption Mask with `tsntool` or with ethtool
+### Set Preemption Mask with `tsntool` or with ethtool on the Switch.
 
 Use `tsntool` to configure queue preemptability (bitmask format):
 
@@ -65,7 +65,7 @@ Refer to this bit-position mapping:
 
 ---
 
-### Send frames and confirm  premeption works with: 
+### Send frames and confirm preemption works on the switch with: 
 
 ```bash
 ethtool --show-mm <interface> | grep MACMergeFragCountTx

@@ -6,14 +6,16 @@ This guide provides the step-by-step configuration of the network interfaces, VL
 ### Configure port with static IPs
 
 ```bash
-sudo ip link set eth0 up
+sudo ip link set <interface> up
 
-sudo ip addr add 192.168.2.1/24 dev eth2
+sudo ip addr add 192.168.2.1/24 dev <interface> 
 ```
 You can follow the same for other sender nodes using their interfaces. Make sure they are on the same subnet.
 
 
-### Configure VLAN ID at the sender node, this willconfigure the ingress port queue to map priority to frames.
+### Configure VLAN ID at the sender node, this will configure the ingress port queue to map priority frames.
+For example if interface is eth0:
+
 ```bash
 ip link add link eth0 name eth0.100 type vlan id 100 ingress-qos-map 0:0 1:1 2:2 3:3 4:4 5:5 6:6 7:7 egress-qos-map 0:0 1:1 2:2 3:3 4:4 5:5 6:6 7:7
 ```
@@ -97,7 +99,7 @@ br0               1 PVID Egress Untagged
 
 ---
 
-## On the receiver board (e.g LS1028a)
+## On the receiver board (e.g LS1028A swp1)
 
 ```bash
 sudo ip link set swp1 up

@@ -4,7 +4,7 @@ To set up your TSN testbed with the LS1028A-RDB board and other hardware, follow
 
 ### 📁 Repository Structure
 
-| File/Folder                                                                                                 | Description                                                               |
+| Folder/File                                                                                                 | Description                                                               |
 | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | [`README.md`](https://github.com/crownie-hub/TSN-Setup/blob/main/README.md)                                 | Overview and instructions on how to use this repository                   |
 | [`docs/setup-guide.md`](https://github.com/crownie-hub/TSN-Setup/blob/main/docs/setup-guide.md)             | Full setup guide for flashing the board and connecting a sample network   |
@@ -26,7 +26,7 @@ To set up your TSN testbed with the LS1028A-RDB board and other hardware, follow
    → Flash image, bring up interfaces, set IPs .
 
  **Step 2. Configure VLANs and Bridge**
-   → Use `vlan-bridge-config.md`
+   → Use `network-config.md`
    → Add ports to bridge, assign VLANs.
 
  **Step 3. Enable PTP Synchronization**
@@ -41,7 +41,7 @@ To set up your TSN testbed with the LS1028A-RDB board and other hardware, follow
    → See `preemption-config.md`
    → Use `ethtool` and `tsntool`.
 
- **Step 6.Send Prioritized Traffic**
+ **Step 6. Send Prioritized Traffic**
    → Run `test-all-prio.py` or  `send-vlan.py` 
    → Simulate traffic of different priorities.
 

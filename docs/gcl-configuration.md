@@ -1,12 +1,9 @@
 That `tc qdisc` command is configuring a **Time-Aware Shaper (TAS)** using `taprio`, which is essential in TSN for scheduling transmission gates based on time. This belongs in a GCL (Gate Control List) configuration documentation file.
 
-You can create a file named `gcl-configuration.md` or `tas-setup.md`, and include the configuration like this:
-
----
 
 # Gate Control List (GCL) Configuration using `taprio`
 
-This guide shows how to configure Time-Aware Scheduling (TAS) on the LS1028A's Ethernet ports using the `taprio` qdisc. This setup enforces time-based transmission windows for queues on the egress port to the receiver, for example, if receivr is connected to  `swp1`.
+This guide shows how to configure Time-Aware Scheduling (TAS) on the LS1028A's Ethernet ports using the `taprio` qdisc. This setup enforces time-based transmission windows for queues on the egress port to the receiver, for example, if receiver node is connected to  `swp1` on the switch.
 
 ---
 

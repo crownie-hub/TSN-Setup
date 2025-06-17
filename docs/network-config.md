@@ -1,9 +1,7 @@
-# 🌐 TSN Network Configuration (LS1028A-RDB)
-
-This guide provides the step-by-step configuration of the network interfaces, VLANs, and IP addresses for the TSN switch (LS1028A-RDB) and other nodes in the setup.
+This guide provides the step-by-step configuration of the network interfaces, VLANs, and IP addresses for the TSN switch (LS1028A-RDB) enetc ports and other nodes in the setup.
 
 
-## On the sender board
+## On the sender node
 
 ### Configure port with static IPs
 
@@ -12,8 +10,10 @@ sudo ip link set eth0 up
 
 sudo ip addr add 192.168.2.1/24 dev eth2
 ```
+You can follow the same for other sender nodes using their interfaces. Make sure they are on the same subnet.
 
-### Configure VLAN ID at the sender node, configure the ingress port queue to map priority to frames
+
+### Configure VLAN ID at the sender node, this willconfigure the ingress port queue to map priority to frames.
 ```bash
 ip link add link eth0 name eth0.100 type vlan id 100 ingress-qos-map 0:0 1:1 2:2 3:3 4:4 5:5 6:6 7:7 egress-qos-map 0:0 1:1 2:2 3:3 4:4 5:5 6:6 7:7
 ```
@@ -75,9 +75,9 @@ chmod +x tsn-switch-setup.sh
 sudo ./tsn-switch-setup.sh
 ```
 
-This sets up your TSN switch bridge `br0` with ports `swp0–swp3`, all part of VLAN 100, and ensures all necessary interfaces are up. 
+This sets up your TSN switch bridge `br0` with ports `swp0–swp3` assuming all ports are active, all part of VLAN 100, and ensures all necessary interfaces are up. 
 
-### Step 4:  Confirm the bridge VLAN config, run:
+### Confirm the bridge VLAN config, run:
 
 ```bash
 bridge vlan show
@@ -95,12 +95,17 @@ swp3              1 PVID Egress Untagged
 br0               1 PVID Egress Untagged
 
 
-### Step 4: Set 
-
 ---
 
 ## On the receiver board (e.g LS1028a)
 
+```bash
+sudo ip link set swp1 up
+
+sudo ip addr add 192.168.2.5/24 dev swp1
+```
+
+ Do a ping test from the sender to receiver or vice versa to confirm they can all communicate. This switch is acting as a bridge, you do not need to set an ip address for the bridge for the setup to work.
 
 
 

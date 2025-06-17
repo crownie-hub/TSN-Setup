@@ -22,9 +22,7 @@ This guide provides step-by-step instructions to set up the NXP LS1028A RDB boar
 
 ---
 
-## Network Architecture
-
-This is a multi-device TSN setup with hardware timestamping and PTP synchronization:
+## Sample Network Architecture
 
 ### Roles
 
@@ -38,8 +36,8 @@ This is a multi-device TSN setup with hardware timestamping and PTP synchronizat
 ### Topology Diagram
 
 ```plaintext
-[LS1021A]      [BBB/PC]
-eth0 |             | eth0
+[NXP Board]      [BBB/PC]
+swp0|             | eth0
     +-------------+
  swp1      |  swp2
      [LS1028A-RDB]
@@ -48,5 +46,4 @@ eth0 |             | eth0
      [LS1028A-RDB]
         (Receiver)
 
-You may also use LS1028a as the sender, the configuration/setup will stiil work.
 

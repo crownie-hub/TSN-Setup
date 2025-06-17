@@ -1,7 +1,7 @@
 
 ## To set preemption on
 
-To ensure **preemption and Time-Sensitive Networking (TSN)** work correctly across the testbed, follow these steps on **all devices** (Sender, Switch, and Receiver):
+To ensure **preemption** work correctly across the testbed, follow these steps:
 
 ---
 
@@ -27,14 +27,14 @@ sudo ethtool -s <interface> speed 1000 duplex full autoneg on
 On the **interface**, enable MAC Merge and preemption:
 
 ```bash
-sudo ethtool --set-mm swp0 tx-enabled on pmac-enabled on
+sudo ethtool --set-mm <interface> tx-enabled on pmac-enabled on
 ```
 
 
 You can verify it's enabled with:
 
 ```bash
- ethtool --show-frame-preemption eth1
+ ethtool --show-frame-preemption <interface>
 ```
 
 ### Set Preemption Mask with `tsntool` or with ethtool
@@ -42,11 +42,11 @@ You can verify it's enabled with:
 Use `tsntool` to configure queue preemptability (bitmask format):
 
 ```bash
-sudo tsntool qbuset --device swp1 --preemptable 0x25
+sudo tsntool qbuset --device <interface> --preemptable 0x25
 ```
 ### or With ethtool
 ```bash
-ethtool --set-frame-preemption swp1 fp on preemptible-queues-mask 0x25 min-fragsize 60
+ethtool --set-frame-preemption <interface> fp on preemptible-queues-mask 0x25 min-fragsize 60
 ```
 The bitmask `0x25` means queues 0, 2, and 5 are preemptable.
 Refer to this bit-position mapping:
@@ -65,10 +65,10 @@ Refer to this bit-position mapping:
 
 ---
 
-### Send frames and confirm  premeption with 
+### Send frames and confirm  premeption works with: 
 
 ```bash
-ethtool --show-mm swp0 | grep MACMergeFragCountTx
+ethtool --show-mm <interface> | grep MACMergeFragCountTx
 ```
 You should see a non-zero counter, confirming that merge frames are being used.
 

@@ -2,7 +2,7 @@
 
 To set up your TSN testbed with the LS1028A-RDB board and other hardware, follow the steps below in order. Each markdown or script file in this repository is designed to handle a specific part of the configuration:
 
-### 📁 Repository Structure
+### Repository Structure
 
 | Folder/File                                                                                                 | Description                                                               |
 | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
